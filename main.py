@@ -289,8 +289,8 @@ def get_songs_to_process(infile, existing_results):
     
     for song in all_songs:
         if song in existing_results:
-             status = existing_results[song].get("Status", "")
-             # SOLO se è stata trovata con successo O definitivamente non trovata, salta
+            status = existing_results[song].get("Status", "")
+            # SOLO se è stata trovata con successo O definitivamente non trovata, salta
             if "✅ Official trovato" in status or "❌ Nessun video ufficiale" in status:
                 already_processed.append(song)
             else:
