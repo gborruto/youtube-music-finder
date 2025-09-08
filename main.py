@@ -291,9 +291,9 @@ def get_songs_to_process(infile, existing_results):
         if song in existing_results:
              status = existing_results[song].get("Status", "")
              # SOLO se è stata trovata con successo O definitivamente non trovata, salta
-                if "✅ Official trovato" in status or "❌ Nessun video ufficiale" in status:
-                  already_processed.append(song)
-                else:
+            if "✅ Official trovato" in status or "❌ Nessun video ufficiale" in status:
+                already_processed.append(song)
+            else:
               # Riprocessa quota esaurita ed errori temporanei
               new_songs.append(song)
         else:
