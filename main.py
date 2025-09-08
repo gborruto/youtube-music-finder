@@ -289,13 +289,13 @@ def get_songs_to_process(infile, existing_results):
     
     for song in all_songs:
         if song in existing_results:
-            status = existing_results[song].get("Status", "")
-            # Se è già stata processata con successo o quota esaurita, salta
-            if "✅" in status or "🚫 Quota esaurita" in status or "❌ Nessun video ufficiale" in status:
-                already_processed.append(song)
-            else:
-                # Riprocessa se c'è stato un errore temporaneo
-                new_songs.append(song)
+             status = existing_results[song].get("Status", "")
+             # SOLO se è stata trovata con successo O definitivamente non trovata, salta
+                if "✅ Official trovato" in status or "❌ Nessun video ufficiale" in status:
+                  already_processed.append(song)
+                else:
+              # Riprocessa quota esaurita ed errori temporanei
+              new_songs.append(song)
         else:
             new_songs.append(song)
     
